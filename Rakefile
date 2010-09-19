@@ -22,6 +22,6 @@ end
 
 
 task :clean do
-  sh "rm -fr ./pkg &>/dev/null"
-  sh "rm -f #{SSHKeyGenerator::NAME}.gemspec &>/dev/null"
+  sh "rm -fr ./pkg 2>/dev/null"
+  sh "rm -f #{SSHKeyGenerator::NAME}.gemspec 2>/dev/null"
 end
