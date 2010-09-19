@@ -1,0 +1,7 @@
+Manifest
+Rakefile
+bin/sshkg
+lib/sshkg.rb
+lib/sshkg/version.rb
+lib/sshkg/config.rb
+lib/sshkg/generator.rb
