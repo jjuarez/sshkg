@@ -16,13 +16,16 @@ begin
 
     gemspec.files         = Dir['lib/**/*.rb'] + Dir['bin/*']
   end
+  
+  Jeweler::GemcutterTasks.new
+
 rescue LoadError
   $stderr.puts "Jeweler not available. Install it with: gem install jeweler"
 end
 
 
-
 task :clean do
+
   sh "rm -fr ./pkg 2>/dev/null"
   sh "rm -f *.gemspec 2>/dev/null"
 end
