@@ -1,5 +1,12 @@
-module SSHKeyGenerator
-  
-  SSHKeyGenerator::NAME="sshkg"
-  SSHKeyGenerator::VERSION="0.0.1"
+module SSHKeyGenerator  
+  module Version
+    MAJOR = 0
+    MINOR = 0
+    PATCH = 2
+
+    STRING = [MAJOR, MINOR, PATCH ].compact.join(".")
+  end
+
+  NAME    = "sshkg"
+  VERSION = Version::STRING
 end

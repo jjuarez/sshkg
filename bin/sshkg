@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
+$:.unshift( File.join( File.dirname( __FILE__ ), "..", "lib" ) )
 require 'rubygems'
-
-$:.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 require 'choice'
 require 'sshkg'
 
@@ -37,14 +36,11 @@ end
 ##
 # ::Main::
 #
-if( __FILE__ == $0 )
+config_file = Choice.choices[:config]
+user        = Choice.choices[:user]
 
-  config_file = Choice.choices[:config]
-  user        = Choice.choices[:user]
+if( config_file && user )
 
-  if( config_file && user )
-
-    SSHKeyGenerator::Config.load( user, config_file )
-    SSHKeyGenerator::generate( )    
-  end
+  SSHKeyGenerator::Config.load( user, config_file )
+  SSHKeyGenerator::generate( )    
 end

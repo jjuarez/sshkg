@@ -1,10 +1,9 @@
 module SSHKeyGenerator
   
-  SSHKeyGenerator::SSH_KEYGEN  = "/usr/bin/ssh-keygen"
+  SSH_KEYGEN = "/usr/bin/ssh-keygen"
 
-  def self.generate( )
+  def self.generate( options=Config.to_h )
     
-    kopts = Config.options
-    `#{SSHKeyGenerator::SSH_KEYGEN} -t #{kopts[:type]} -f #{kopts[:file]} -C "#{kopts[:comment]}" 2>/dev/null </dev/null`
+    `#{SSH_KEYGEN} -t #{options[:type]} -f #{options[:file]} -C "#{options[:comment]}" 2>/dev/null </dev/null` if options
   end
 end

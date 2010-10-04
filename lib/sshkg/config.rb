@@ -14,7 +14,7 @@ module SSHKeyGenerator
         @config[key] ? @config[key] : @config[key.to_s] if @config
       end
       
-      def options()
+      def to_h()
         { :type    =>Config[:type], 
           :file    =>"id_#{Config[:type]}.#{Config[:user]}", 
           :comment =>"#{Config[:user]}@#{Config[:comment]}" } if @config

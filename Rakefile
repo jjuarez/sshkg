@@ -11,7 +11,7 @@ begin
     gemspec.summary       = "A very simple gem that helps to automate the generation of SSH Keys"
     gemspec.description   = "A wrapper over ssh-keygem for rubyists"
     gemspec.email         = "javier.juarez@gmail.com"
-    gemspec.homepage      = "http://github.com/jjuarez/SSHKeyGenerator::NAME"
+    gemspec.homepage      = "http://github.com/jjuarez/#{SSHKeyGenerator::NAME}"
     gemspec.authors       = ["Javier Juarez"]
 
     gemspec.files         = Dir['lib/**/*.rb'] + Dir['bin/*']
@@ -21,7 +21,8 @@ rescue LoadError
 end
 
 
+
 task :clean do
   sh "rm -fr ./pkg 2>/dev/null"
-  sh "rm -f #{SSHKeyGenerator::NAME}.gemspec 2>/dev/null"
+  sh "rm -f *.gemspec 2>/dev/null"
 end
