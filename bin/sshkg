@@ -1,46 +1,12 @@
 #!/usr/bin/env ruby
 
 $:.unshift( File.join( File.dirname( __FILE__ ), "..", "lib" ) )
-require 'rubygems'
-require 'choice'
 require 'sshkg'
-
-Choice.options do
-  header ''
-  header '  Specific options:'
-
-  option :config do
-    short '-c'
-    long '--config=DOMAIN'
-    desc 'The yaml config file'
-  end 
-  
-  option :user do
-    short '-u'
-    long '--user=USER_ID'
-    desc 'The user identificator'
-  end
-
-  separator ''
-  separator '  Common options:'
-
-  option :help do
-    short '-h'
-    long '--help'
-    desc "Show this screen"
-  end 
-  
-  separator ''
-end
 
 ##
 # ::Main::
-#
-config_file = Choice.choices[:config]
-user        = Choice.choices[:user]
+if( Choice.choices[:config] && Choice.choices[:user] )
 
-if( config_file && user )
-
-  SSHKeyGenerator::Config.load( user, config_file )
+  SSHKeyGenerator::Config.load( Choice.choices[:user], Choice.choices[:config] )
   SSHKeyGenerator::generate( )    
 end

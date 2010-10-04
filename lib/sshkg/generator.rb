@@ -1,4 +1,5 @@
 module SSHKeyGenerator
+  extend self
   
   SSH_KEYGEN = "/usr/bin/ssh-keygen"
 
