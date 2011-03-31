@@ -1,4 +1,4 @@
 ---
   :type: rsa
-  :comment: example.com
   :bits: 2048
+  :comment: example.com
