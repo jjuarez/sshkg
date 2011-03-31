@@ -1,7 +1,6 @@
-Manifest
 Rakefile
 bin/sshkg
-lib/sshkg.rb
+lib/loader.rb
 lib/sshkg/version.rb
-lib/sshkg/config.rb
+lib/sshkg/options_parser.rb
 lib/sshkg/generator.rb
