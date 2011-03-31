@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-$:.unshift( File.join( File.dirname( __FILE__ ), "..", "lib" ) )
-require 'sshkg'
+$:.unshift( File.join( File.dirname( __FILE__ ), %w[.. lib] ) )
+
+require 'loader'
 
 ##
 # ::Main::
-if( Choice.choices[:config] && Choice.choices[:user] )
+ConfigContext.user = Choice.choices[:user]
 
-  SSHKeyGenerator::Config.load( Choice.choices[:user], Choice.choices[:config] )
-  SSHKeyGenerator::generate( )    
-end
+ConfigContext.load( File.expand_path( Choice.choices[:config] ) )
+SSHKeyGenerator.generate( ConfigContext.all )    
