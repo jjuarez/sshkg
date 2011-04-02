@@ -48,7 +48,8 @@ class TestSSHKeyGenerator < Test::Unit::TestCase
             
       SSHKeyGenerator.generate( :user=>@test_dsa_user )
       
-      assert( File.exist?( @test_dsa_key_file_name ) )      
+      assert( File.exist?( @test_dsa_key_file_name ) )
+      assert( File.read( @test_dsa_key_file_name ).delete( "\n") =~/^-----BEGIN DSA PRIVATE KEY-----(.+)-----END DSA PRIVATE KEY-----$/ )
 
       assert( File.exist?( @test_dsa_public_key_file_name ) ) 
       assert( File.read( @test_dsa_public_key_file_name ) =~ /^ssh-dss (.+) #{@test_dsa_user}\@example.com$/ )
@@ -62,6 +63,9 @@ class TestSSHKeyGenerator < Test::Unit::TestCase
       
       SSHKeyGenerator.generate( :user=>@test_dsa_user, :type=>:dsa, :bits=>1024, :comment=>@test_dsa_comment )
 
+      assert( File.exist?( @test_dsa_key_file_name ) )
+      assert( File.read( @test_dsa_key_file_name ).delete( "\n") =~/^-----BEGIN DSA PRIVATE KEY-----(.+)-----END DSA PRIVATE KEY-----$/ )
+
       assert( File.exist?( @test_dsa_public_key_file_name ) )
       assert( File.read( @test_dsa_public_key_file_name ) =~ /^ssh-dss (.+) #{@test_dsa_user}\@#{@test_dsa_comment}$/ )
     end
@@ -70,6 +74,9 @@ class TestSSHKeyGenerator < Test::Unit::TestCase
     should "generate a pair of RSA keys" do
     
       SSHKeyGenerator.generate( :user=>@test_rsa_user, :type=>:rsa, :bits=>2048, :comment=>@test_rsa_comment )  
+
+      assert( File.exist?( @test_rsa_key_file_name ) )
+      assert( File.read( @test_rsa_key_file_name ).delete( "\n") =~/^-----BEGIN RSA PRIVATE KEY-----(.+)-----END RSA PRIVATE KEY-----$/ )
 
       assert( File.exist?( @test_rsa_public_key_file_name ) )
       assert( File.read( @test_rsa_public_key_file_name ) =~ /ssh-rsa (.+) #{@test_rsa_user}\@#{@test_rsa_comment}$/ )
