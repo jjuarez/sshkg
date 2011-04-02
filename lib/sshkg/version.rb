@@ -3,7 +3,7 @@ module SSHKeyGenerator
     INFO = {
       :major =>0,
       :minor =>2,
-      :patch =>0
+      :patch =>1
     }
 
     NAME    = 'sshkg'
